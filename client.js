@@ -34,13 +34,21 @@ function addEmployee() {
 
 // function to add employee information to DOM
 function employeeDisplay() {
-    
-    // append employee information to DOM
-    $('#tableLine').append(`
-        <tr>
-            <td>${employees[0].firstName}</td>
-        </tr>
-    `)
+    // clear display
+    $('#tableLine').empty();
+
+    // loop through employees array to append employee information to DOM
+    for(let employee of employees) {
+        $('#tableLine').append(`
+            <tr>
+                <td>${employee.firstName}</td>
+                <td>${employee.lastName}</td>
+                <td>${employee.idNumber}</td>
+                <td>${employee.title}</td>
+                <td>${employee.salary}</td>
+            </tr>
+        `)
+    }
 }
 
 
