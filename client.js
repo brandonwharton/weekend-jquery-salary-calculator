@@ -26,10 +26,22 @@ function addEmployee() {
     // push employee object to employees array
     employees.push(employee);
     
-    console.log(employees);
+    // call employeeDisplay to update DOM
+    employeeDisplay();
+    // console.log(employees);
     
 }
 
+// function to add employee information to DOM
+function employeeDisplay() {
+    
+    // append employee information to DOM
+    $('#tableLine').append(`
+        <tr>
+            <td>${employees[0].firstName}</td>
+        </tr>
+    `)
+}
 
 
 
