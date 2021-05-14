@@ -52,7 +52,7 @@ function employeeDisplay() {
                 <td>${employee.title}</td>
                 <td>${employee.salary}</td>
             </tr>
-        `)
+        `);
 
         // calculate annual salary
         annualSalary += Number(employee.salary);
@@ -69,7 +69,12 @@ function monthlyTotal() {
     // console.log('Monthly salary', monthlySalary);
     
     // adjust monthly salary total on DOM
-    $('.monthlyTotal').text(`Total Monthly: $${monthlySalary}`)
+    $('.monthlyTotal').text(`Total Monthly: $${monthlySalary}`);
+
+    // highlight monthly cost if over 20,000
+    if(monthlySalary > 20000) {
+        $('.monthlyTotal').addClass('highlight');
+    }
 } // end monthlyTotal
 
 
@@ -77,5 +82,5 @@ function readyNow() {
     console.log('jquery running');
 
     // click listeners
-    $('#submit').on('click', addEmployee)
+    $('#submit').on('click', addEmployee);
 }

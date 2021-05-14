@@ -1,5 +1,14 @@
-.monthlyTotal {
+.monthContainer {
     display: flex;
     justify-content: flex-end;
+}
+
+.monthlyTotal {
+    display: inline-flex;
     margin: 1em;
+}
+
+.highlight {
+    /* display: inline-flex; */
+    background-color: red;
 }
