@@ -45,12 +45,15 @@ function employeeDisplay() {
     for(let employee of employees) {
         // append employee information to table
         $('#tableLine').append(`
-            <tr>
+            <tr class="deletable">
                 <td>${employee.firstName}</td>
                 <td>${employee.lastName}</td>
                 <td>${employee.idNumber}</td>
                 <td>${employee.title}</td>
                 <td>${employee.salary}</td>
+                <td>
+                    <button class="deleteBtn">Delete</button>
+                </td>
             </tr>
         `);
 
@@ -63,6 +66,7 @@ function employeeDisplay() {
 //    console.log('Employee Salary', annualSalary);
 } // end employeeDisplay
 
+// function for monthly salary calculation and DOM updating
 function monthlyTotal() {
     // calculate current monthly salary
     let monthlySalary = annualSalary/12;
@@ -77,10 +81,18 @@ function monthlyTotal() {
     }
 } // end monthlyTotal
 
+function deleteRow() {
+    // console.log('button works!');
+    
+    // target and delete table row
+    $(this).closest('.deletable').remove();
+    
+}
 
 function readyNow() {
     console.log('jquery running');
 
     // click listeners
     $('#submit').on('click', addEmployee);
+    $('.table').on('click', '.deleteBtn', deleteRow);
 }
