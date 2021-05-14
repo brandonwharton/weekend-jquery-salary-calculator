@@ -4,6 +4,7 @@ $(document).ready(readyNow);
 
 // hold employee objects
 const employees = [];
+let annualSalary = 0;
 
 
 function addEmployee() {
@@ -30,17 +31,22 @@ function addEmployee() {
     employeeDisplay();
     // console.log(employees);
     
-}
+} // end addEmployee
 
 // function to add employee information to DOM
 function employeeDisplay() {
     // clear display
     $('#tableLine').empty();
 
+    // reset annual salary before running loop
+    annualSalary = 0;
+
     // loop through employees array to append employee information to DOM
     for(let employee of employees) {
+        // append employee information to table
         $('#tableLine').append(`
             <tr>
+                <th scope ="row"><th>
                 <td>${employee.firstName}</td>
                 <td>${employee.lastName}</td>
                 <td>${employee.idNumber}</td>
@@ -48,9 +54,19 @@ function employeeDisplay() {
                 <td>${employee.salary}</td>
             </tr>
         `)
-    }
-}
 
+        // calculate annual salary
+        annualSalary += Number(employee.salary);
+    } // end for of loop
+    // run monthlyTotal to calculate and append to DOM
+    monthlyTotal();
+
+    console.log('Employee Salary', annualSalary);
+} // end employeeDisplay
+
+function monthlyTotal() {
+
+}
 
 
 function readyNow() {
