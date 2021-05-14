@@ -40,13 +40,12 @@ function employeeDisplay() {
 
     // reset annual salary before running loop
     annualSalary = 0;
-
+    
     // loop through employees array to append employee information to DOM
     for(let employee of employees) {
         // append employee information to table
         $('#tableLine').append(`
             <tr>
-                <th scope ="row"><th>
                 <td>${employee.firstName}</td>
                 <td>${employee.lastName}</td>
                 <td>${employee.idNumber}</td>
@@ -61,12 +60,17 @@ function employeeDisplay() {
     // run monthlyTotal to calculate and append to DOM
     monthlyTotal();
 
-    console.log('Employee Salary', annualSalary);
+//    console.log('Employee Salary', annualSalary);
 } // end employeeDisplay
 
 function monthlyTotal() {
-
-}
+    // calculate current monthly salary
+    let monthlySalary = annualSalary/12;
+    // console.log('Monthly salary', monthlySalary);
+    
+    // adjust monthly salary total on DOM
+    $('.monthlyTotal').text(`Total Monthly: $${monthlySalary}`)
+} // end monthlyTotal
 
 
 function readyNow() {
