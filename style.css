@@ -24,7 +24,7 @@ body {
     justify-content: center;
 }
 
-#errorMsg {
+.errorMsg {
     text-align: center;
     margin: 1.5em;
     font-family: Arial, Helvetica, sans-serif;
@@ -40,7 +40,33 @@ body {
 }
 
 .table th {
-    font-size: 1.25em;
+    font-size: 1.3rem;
+}
+
+.deletable {
+    vertical-align: middle;
+    font-size: 1.1rem;
+}
+
+.firstCol, .lastCol, {
+    width: 20%;
+}
+
+.titleCol {
+    width: 25%
+}
+
+.salCol {
+    width: 15%;
+}
+
+.idCol, .delBtnCol {
+    width: 10%;
+}
+
+.deleteBtn {
+    margin: auto;
+    display: block;
 }
 
 .monthContainer {

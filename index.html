@@ -29,18 +29,18 @@
             <input type="number" placeholder="Annual Salary" id="empSalary">
             <button id="submit" class="btn btn-primary">Submit</button>
         </section>
-        <div id="errorMsg"></div>
+        <div class="errorMsg"></div>
         <section id="empTable" class="tableContainer">
             <h3>Employees</h3>
-            <table class="table">
+            <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">ID</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Annual Salary</th>
-                        <th scope="col>"</th>
+                        <th scope="col" class="firstCol">First Name</th>
+                        <th scope="col" class="lastCol">Last Name</th>
+                        <th scope="col" class="idCol">ID</th>
+                        <th scope="col" class="titleCol">Title</th>
+                        <th scope="col" class="salCol">Annual Salary</th>
+                        <th scope="col" class="delBtnCol"></th>
                     </tr>
                 </thead>
                 <tbody id="tableLine">

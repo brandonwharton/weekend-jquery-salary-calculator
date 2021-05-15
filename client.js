@@ -70,7 +70,7 @@ function employeeDisplay() {
                 <td>${employee.lastName}</td>
                 <td>${employee.idNumber}</td>
                 <td>${employee.title}</td>
-                <td>${employee.salary}</td>
+                <td>$${employee.salary}</td>
                 <td>
                     <button class="deleteBtn btn btn-secondary">Delete</button>
                 </td>
@@ -115,7 +115,7 @@ function deleteRow() {
     // loop through employees array looking for a specific entry
     for (let i=0; i < employees.length; i++) {
         // target the specific line based on the object in employees versus the variable el created above
-        if(el === `${employees[i].firstName}${employees[i].lastName}${employees[i].idNumber}${employees[i].title}${employees[i].salary}`) {
+        if(el === `${employees[i].firstName}${employees[i].lastName}${employees[i].idNumber}${employees[i].title}$${employees[i].salary}`) {
             // lower annual salary
             annualSalary -= employees[i].salary;
             // remove object from employees array
