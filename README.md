@@ -1,9 +1,12 @@
-# Project Name
+# Salary Calculator using jquery
 
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
 
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
+The goal of this project was to create a a way to track employee salaries using an input field and a table to store
+each input. Additionally, the app was to track total monthly salary against a budget cap, along with providing a 
+delete button upon table row generation.
+
+
 
 Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
