@@ -69,7 +69,7 @@ function employeeDisplay() {
 // function for monthly salary calculation and DOM updating
 function monthlyTotal() {
     // calculate current monthly salary
-    let monthlySalary = annualSalary/12;
+    let monthlySalary = Math.round(annualSalary/12);
     // console.log('Monthly salary', monthlySalary);
     
     // adjust monthly salary total on DOM

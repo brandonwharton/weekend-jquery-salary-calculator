@@ -14,12 +14,13 @@ body {
     margin: .5em;
 }
 
-.mainBody {
-    margin: 2em;
+.mainBody h2 {
+    text-align: center;
+    margin: 1em;
 }
 
-.mainBody h3 {
-    text-align: center;
+.tableContainer {
+    margin: 4em
 }
 
 .inputForm {
