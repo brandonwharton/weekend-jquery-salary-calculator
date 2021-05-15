@@ -86,7 +86,9 @@ function monthlyTotal() {
 } // end monthlyTotal
 
 function deleteRow() {
-    // console.log('button works!');
+    
+    // my original way of doing this for just deleting the table line was
+    // $(this).closest('.deletable').remove();
     
     // create a string of the current table row's contents and save to a variable
     let el = $(this).parent().siblings().text();
@@ -95,15 +97,13 @@ function deleteRow() {
     for (let i=0; i < employees.length; i++) {
         // target the specific line based on the object in employees versus the variable el created above
         if(el === `${employees[i].firstName}${employees[i].lastName}${employees[i].idNumber}${employees[i].title}${employees[i].salary}`) {
-            console.log('Found it!');
             // lower annual salary
             annualSalary -= employees[i].salary;
             // remove object from employees array
             employees.splice(i, 1);
-            // target and delete target row from DOM
-            $(this).closest('.deletable').remove();
-            // run monthlyTotal to update the monthly total on DOM
-            monthlyTotal();
+            // run employeeDisplay to update table on DOM as well as monthly salary
+            employeeDisplay();
+            // break in case of duplicate entries on the table
             break;
         }
     } // end for loop  
