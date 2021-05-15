@@ -8,25 +8,44 @@ let annualSalary = 0;
 
 
 function addEmployee() {
+    // clear any previous incomplete entry error message from DOM
+    $('#errorMsg').empty();
+
+    // make variables for inputs for ease of reuse
+    let firstName = $('#firstName');
+    let lastName = $('#lastName');
+    let idNum = $('#empId');
+    let title = $('#empTitle');
+    let salary = $('#empSalary');
+
+
     // get values from inputs on DOM and create employee object with them
     const employee = {
-        firstName: $('#firstName').val(),
-        lastName: $('#lastName').val(),
-        idNumber: $('#empId').val(),
-        title: $('#empTitle').val(),
-        salary: $('#empSalary').val()
+        firstName: firstName.val(),
+        lastName: lastName.val(),
+        idNumber: idNum.val(),
+        title: title.val(),
+        salary: salary.val()
     }
 
     // clear inputs
-    $('#firstName').val('');
-    $('#lastName').val('');
-    $('#empId').val('');
-    $('#empTitle').val('');
-    $('#empSalary').val('');
+    firstName.val('');
+    lastName.val('');
+    idNum.val('');
+    title.val('');
+    salary.val('');
 
-    // push employee object to employees array
-    employees.push(employee);
-    
+   // check for complete form fill, push into employees array if form is complete
+    if ( employee.firstName && employee.lastName && employee.idNumber && employee.title && employee.salary ) {
+        employees.push(employee);
+    }
+    // error message if form is incomplete
+    else {
+        console.log('incomplete entry');
+        // append error message to DOM
+        $('#errorMsg').append(`<h4>Please fill out form completely</h4>`)
+    }
+
     // call employeeDisplay to update DOM
     employeeDisplay();
 
