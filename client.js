@@ -53,7 +53,7 @@ function employeeDisplay() {
                 <td>${employee.title}</td>
                 <td>${employee.salary}</td>
                 <td>
-                    <button class="deleteBtn">Delete</button>
+                    <button class="deleteBtn btn btn-secondary">Delete</button>
                 </td>
             </tr>
         `);
