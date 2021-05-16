@@ -2,14 +2,15 @@ console.log('js running');
 
 $(document).ready(readyNow);
 
-// hold employee objects
+// hold employee objects and dynamic annualSalary
 const employees = [];
 let annualSalary = 0;
 
 
+// take in inputs from DOM, create employee object from inputs, run function to append information to DOM
 function addEmployee() {
     // clear any previous incomplete entry error message from DOM
-    $('#errorMsg').empty();
+    $('.errorMsg').empty();
 
     // make variables for inputs for ease of reuse
     let firstName = $('#firstName');
@@ -35,30 +36,41 @@ function addEmployee() {
     title.val('');
     salary.val('');
 
-   // check for complete form fill, push into employees array if form is complete
-    if ( employee.firstName && employee.lastName && employee.idNumber && employee.title && employee.salary ) {
-        employees.push(employee);
-    }
-    // error message if form is incomplete
-    else {
+
+    // check new object for any blank values, if found append error message to DOM
+    if (Object.values(employee).includes('')) {
         console.log('incomplete entry');
         // append error message to DOM
-        $('#errorMsg').append(`<h4>Please fill out form completely</h4>`)
+        $('.errorMsg').append(`<h4>Please fill out form completely</h4>`)
     }
+    // if all values are filled in append new line to table on DOM
+    else {
+        employees.push(employee);
+    }
+
+//    // original way of handling above conditional was a bit more wordy than necessary
+//     if ( employee.firstName && employee.lastName && employee.idNumber && employee.title && employee.salary ) {
+//         employees.push(employee);
+//     }
+//     // error message if form is incomplete
+//     else {
+//         console.log('incomplete entry');
+//         // append error message to DOM
+//         $('.errorMsg').append(`<h4>Please fill out form completely</h4>`)
+//     }
+
 
     // call employeeDisplay to update DOM
     employeeDisplay();
-
-    // console.log(employees);
-    
 } // end addEmployee
 
-// function to add employee information to DOM
+
+// function to add employee information from objects in employees array to DOM
 function employeeDisplay() {
     // clear display
     $('#tableLine').empty();
 
-    // reset annual salary before running loop
+    // reset annual salary variable before running loop
     annualSalary = 0;
 
     // loop through employees array to append employee information to DOM
@@ -76,20 +88,21 @@ function employeeDisplay() {
                 </td>
             </tr>
         `);
-        // calculate annual salary
+
+        // calculate annual salary with updated employee objects
         annualSalary += Number(employee.salary);
     } // end for of loop
+
     // run monthlyTotal to calculate and append to DOM
     monthlyTotal();
-
-//    console.log('Employee Salary', annualSalary);
 } // end employeeDisplay
+
 
 // function for monthly salary calculation and DOM updating
 function monthlyTotal() {
-    // calculate current monthly salary
+
+    // calculate current monthly salary rounded to nearest dollar
     let monthlySalary = Math.round(annualSalary/12);
-    // console.log('Monthly salary', monthlySalary);
     
     // adjust monthly salary total on DOM
     $('.monthlyTotal').text(`Total Monthly: $${monthlySalary}`);
@@ -104,6 +117,8 @@ function monthlyTotal() {
     }
 } // end monthlyTotal
 
+
+// delete table line and corresponding employee object on click of delete button
 function deleteRow() {
     
     // my original way of doing this for just deleting the table line was
@@ -114,13 +129,12 @@ function deleteRow() {
     
     // loop through employees array looking for a specific entry
     for (let i=0; i < employees.length; i++) {
+
         // target the specific line based on the object in employees versus the variable el created above
         if(el === `${employees[i].firstName}${employees[i].lastName}${employees[i].idNumber}${employees[i].title}$${employees[i].salary}`) {
-            // lower annual salary
-            annualSalary -= employees[i].salary;
             // remove object from employees array
             employees.splice(i, 1);
-            // run employeeDisplay to update table on DOM as well as monthly salary
+            // run employeeDisplay to update table and monthly salary on DOM
             employeeDisplay();
             // break in case of duplicate entries on the table
             break;

@@ -41,6 +41,7 @@ body {
 
 .table th {
     font-size: 1.3rem;
+    background-color: rgb(250, 240, 199);
 }
 
 .deletable {
@@ -80,8 +81,8 @@ body {
 }
 
 .highlight {
-    /* display: inline-flex; */
     background-color: red;
+    color: white;
     border: 3px solid black;
     padding: .25em;
 }
